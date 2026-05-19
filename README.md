@@ -1,6 +1,10 @@
 # Aybuben
 
+[![Deploy to GitHub Pages](https://github.com/<your-username>/aybuben/actions/workflows/deploy.yml/badge.svg)](https://github.com/<your-username>/aybuben/actions/workflows/deploy.yml)
+
 Personal platform for learning Armenian (Eastern Armenian, reformed orthography).
+
+**Live:** https://&lt;your-username&gt;.github.io/aybuben/
 
 ## Development
 
@@ -9,7 +13,9 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173.
+Open http://localhost:5173/aybuben/.
+
+> Note: the dev server respects Vite's `base: '/aybuben/'` setting. Opening `localhost:5173` without the suffix redirects, but using the full path is more reliable.
 
 ## What's inside
 
@@ -23,6 +29,10 @@ Open http://localhost:5173.
 Vite · React · TypeScript · Tailwind · React Router · Handwritten i18n (uk/ru) · localStorage
 
 No backend. Content is stored as TS modules in `src/content/`.
+
+## Deploy
+
+Pushes to `main` automatically build and deploy via GitHub Actions. See `.github/workflows/deploy.yml`.
 
 ## For contributors and future-me
 

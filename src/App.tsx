@@ -7,20 +7,22 @@ import {LearnPage} from './pages/LearnPage';
 import {ThemePage} from './pages/ThemePage';
 import {TestsPage} from './pages/TestsPage';
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 export default function App() {
   return (
     <LangProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route element={<AppShell/>}>
             {/* / → /learn */}
             <Route path="/" element={<Navigate to="/learn" replace/>}/>
 
-            {/* Навчання */}
+            {/* Learning */}
             <Route path="/learn" element={<LearnPage/>}/>
             <Route path="/learn/topic/:slug" element={<ThemePage/>}/>
 
-            {/* Тести */}
+            {/* Tests */}
             <Route path="/tests" element={<TestsPage/>}/>
 
             {/* 404 → /learn */}

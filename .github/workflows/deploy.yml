@@ -1,0 +1,65 @@
+# Build and deploy to GitHub Pages on every push to the main.
+# Configured for a project repo (URL: https://<user>.github.io/aybuben/).
+#
+# Setup checklist (one-time, in GitHub UI):
+#   1. Repo Settings → Pages → Source: "GitHub Actions"
+#   2. Repo Settings → Actions → General → Workflow permissions:
+#      "Read and write permissions" (usually default for new repos)
+#   3. Push to the main — the workflow runs automatically.
+#      Status: github.com/<user>/aybuben/actions
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # manual trigger from the Actions tab
+
+# Single in-flight deploy; queued runs replace previous ones.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      # SPA hack: GitHub Pages serves 404.html for unknown paths.
+      # By making it a copy of index.html, deep links like /aybuben/learn/topic/colors
+      # still bootstrap the React app instead of showing a real 404.
+      - name: Copy index.html to 404.html
+        run: cp dist/index.html dist/404.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
