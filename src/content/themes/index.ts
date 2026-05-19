@@ -2,11 +2,15 @@ import type {AlphabetTheme, NumeralsTheme, Theme, VocabTheme} from '../types';
 import {alphabet} from './alphabet';
 import {colors} from './colors';
 import {numbers} from './numbers';
+import {domesticAnimals} from './domestic-animals';
+import {wildAnimals} from './wild-animals';
 
 export const themes: Theme[] = [
   alphabet,
   numbers,
   colors,
+  domesticAnimals,
+  wildAnimals,
 ];
 
 /** Окремі вибірки. */

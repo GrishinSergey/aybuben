@@ -24,6 +24,7 @@ export const translations = {
       },
       topic: {
         wordsHeader: 'Слова теми',
+        passageHeader: 'Текст для читання',
       },
       notFound: 'Тему не знайдено',
     },
@@ -56,6 +57,7 @@ export const translations = {
       },
       topic: {
         wordsHeader: 'Слова темы',
+        passageHeader: 'Текст для чтения',
       },
       notFound: 'Тема не найдена',
     },

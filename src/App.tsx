@@ -6,6 +6,7 @@ import {AppShell} from './components/AppShell';
 import {LearnPage} from './pages/LearnPage';
 import {ThemePage} from './pages/ThemePage';
 import {TestsPage} from './pages/TestsPage';
+import {AnimalQuizPage} from './pages/AnimalQuizPage';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -24,6 +25,7 @@ export default function App() {
 
             {/* Tests */}
             <Route path="/tests" element={<TestsPage/>}/>
+            <Route path="/tests/animals" element={<AnimalQuizPage/>}/>
 
             {/* 404 → /learn */}
             <Route path="*" element={<Navigate to="/learn" replace/>}/>

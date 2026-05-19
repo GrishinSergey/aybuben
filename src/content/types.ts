@@ -32,7 +32,9 @@ export type Word = {
   ru: string;
   pos: PartOfSpeech;
   emoji?: string;
+  imageUrl?: string;
   audio?: string;
+  verified?: boolean;
   examples?: Array<{ hy: string; uk: string; ru: string }>;
 };
 
@@ -43,6 +45,7 @@ export type VocabTheme = {
   title: Bilingual;
   hyName?: string;
   words: Word[];
+  passage?: { hy: string; translit: string; uk: string; ru: string };
 };
 
 /* ============================================================

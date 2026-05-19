@@ -9,6 +9,7 @@ import { findTheme } from '../content/themes';
 import { plural } from '../i18n/plural';
 import { LetterCard } from '../components/LetterCard';
 import { WordCard } from '../components/WordCard';
+import { TextCard } from '../components/TextCard';
 import { NumeralsView } from './NumeralsView';
 
 export function ThemePage() {
@@ -82,11 +83,21 @@ export function ThemePage() {
       )}
 
       {theme.kind === 'vocab' && (
-        <div className="mt-10 grid gap-5 auto-grid-280">
-          {theme.words.map((word, idx) => (
-            <WordCard key={`${word.hy}-${idx}`} word={word} lang={lang} />
-          ))}
-        </div>
+        <>
+          <div className="mt-10 grid gap-5 auto-grid-280">
+            {theme.words.map((word, idx) => (
+              <WordCard key={`${word.hy}-${idx}`} word={word} lang={lang} />
+            ))}
+          </div>
+          {theme.passage && (
+            <div className="mt-12">
+              <h2 className="font-display vf-soft-md font-semibold text-2xl text-ink-900 -tracking-[0.01em] mb-5">
+                {t.pages.topic.passageHeader}
+              </h2>
+              <TextCard passage={theme.passage} lang={lang} />
+            </div>
+          )}
+        </>
       )}
 
       {theme.kind === 'numerals' && <NumeralsView theme={theme} />}
