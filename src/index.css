@@ -1,0 +1,57 @@
+/* Fonts — підключаємо тут, а не в index.html, щоб тримати все типографічне в одному місці */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=DM+Sans:opsz,wght@9..40,400..700&family=Noto+Sans+Armenian:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================
+   BASE — кастомізація глобальних стилів
+   ============================================================= */
+@layer base {
+    html, body {
+        @apply font-sans text-ink-700 antialiased min-h-screen leading-relaxed bg-cream-100;
+    }
+
+    body {
+        background-image: radial-gradient(ellipse 900px 700px at 85% -10%, rgba(255, 148, 32, 0.18), transparent 50%),
+        radial-gradient(ellipse 700px 500px at -5% 50%, rgba(199, 62, 29, 0.08), transparent 50%),
+        radial-gradient(ellipse 600px 500px at 100% 100%, rgba(45, 95, 93, 0.06), transparent 50%);
+    }
+}
+
+/* =============================================================
+   COMPONENTS — те, чого не виразити utility-класами
+   ============================================================= */
+@layer components {
+    /* Fraunces variable-axis helpers */
+    .vf-soft-hi {
+        font-variation-settings: "SOFT" 80, "WONK" 1;
+    }
+
+    .vf-soft-md {
+        font-variation-settings: "SOFT" 60;
+    }
+
+    .vf-soft-lo {
+        font-variation-settings: "SOFT" 50;
+    }
+
+    /* Автоматичні responsive-сітки. Використовуй замість grid-cols-N коли
+       не знаєш скільки буде елементів, але хочеш щоб вони красиво заповнили ряд. */
+    .auto-grid-200 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .auto-grid-220 {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .auto-grid-240 {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .auto-grid-280 {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
