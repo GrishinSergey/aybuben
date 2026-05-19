@@ -72,4 +72,4 @@ export const translations = {
   },
 } as const;
 
-export type Translations = typeof translations.uk;
+export type Translations = (typeof translations)[Lang];
