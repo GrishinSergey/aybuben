@@ -1,35 +1,35 @@
 # Aybuben
 
-Особиста платформа для вивчення вірменської (Eastern Armenian, реформована орфографія).
+Personal platform for learning Armenian (Eastern Armenian, reformed orthography).
 
-## Розробка
+## Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Відкрий http://localhost:5173.
+Open http://localhost:5173.
 
-## Структура
+## What's inside
 
-- **Алфавіт** — 39 літер із рукописними формами (Wikimedia Commons, CC-BY-SA)
-- **Числа** — цифри, круглі, приклади
-- **Лексика** — теми з кольорами, плани розширити
-- **Граматика** — заплановано
+- **Alphabet** — 39 letters with handwritten forms (Wikimedia Commons, CC-BY-SA)
+- **Numbers** — digits, round numbers, examples
+- **Vocabulary** — themes (currently: colors), more planned
+- **Grammar** — planned
 
-## Технології
+## Tech
 
-Vite · React · TypeScript · Tailwind · React Router · Самописний i18n (uk/ru) · localStorage
+Vite · React · TypeScript · Tailwind · React Router · Handwritten i18n (uk/ru) · localStorage
 
-Бекенду немає, контент зберігається як TS-модулі в `src/content/`.
+No backend. Content is stored as TS modules in `src/content/`.
 
-## Для контриб'юторів і себе через місяць
+## For contributors and future-me
 
-- [CLAUDE.md](./CLAUDE.md) — інструкції для Claude Code
-- [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — чому ми так зробили
-- [docs/ADDING_CONTENT.md](./docs/ADDING_CONTENT.md) — як додати нову тему/слово
+- [CLAUDE.md](./CLAUDE.md) — instructions for Claude Code
+- [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — why things are the way they are
+- [docs/ADDING_CONTENT.md](./docs/ADDING_CONTENT.md) — how to add a new theme or word
 
-## Кредити
+## Credits
 
-Зображення рукописних літер — Wikimedia Commons, ліцензія CC-BY-SA.
+Handwritten letter images come from Wikimedia Commons, licensed under CC-BY-SA.
