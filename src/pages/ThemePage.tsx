@@ -40,6 +40,10 @@ export function ThemePage() {
       const n = theme.words.length;
       return `${n} ${plural(n, t.common.cardForms)}`;
     }
+    if (theme.kind === 'grammar') {
+      const n = theme.rules.length;
+      return `${n} ${plural(n, t.pages.grammar.ruleForms)}`;
+    }
     // numerals — показуємо сумарно
     const n = theme.digits.length + theme.rounds.length;
     return `${n} ${plural(n, t.common.cardForms)}`;
@@ -101,6 +105,27 @@ export function ThemePage() {
       )}
 
       {theme.kind === 'numerals' && <NumeralsView theme={theme} />}
+
+      {theme.kind === 'grammar' && (
+        <div className="mt-10 grid gap-5 auto-grid-280">
+          {theme.rules.map((rule) => (
+            <Link
+              key={rule.slug}
+              to={`/learn/topic/grammar/${rule.slug}`}
+              className="block h-full"
+            >
+              <div className="bg-white rounded-card-lg p-6 shadow-soft hover:-translate-y-0.5 hover:shadow-card transition-all h-full cursor-pointer">
+                <div className="w-16 h-16 rounded-2xl grid place-items-center text-4xl mb-4 bg-gradient-to-br from-apricot-100 to-pomegranate-100">
+                  {rule.emoji}
+                </div>
+                <div className="font-display vf-soft-lo font-semibold text-[22px] text-ink-900 -tracking-[0.01em]">
+                  {rule.title[lang]}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

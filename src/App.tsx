@@ -5,6 +5,7 @@ import {LangProvider} from './i18n/LangContext';
 import {AppShell} from './components/AppShell';
 import {LearnPage} from './pages/LearnPage';
 import {ThemePage} from './pages/ThemePage';
+import {GrammarRulePage} from './pages/GrammarRulePage';
 import {TestsPage} from './pages/TestsPage';
 import {AnimalQuizPage} from './pages/AnimalQuizPage';
 
@@ -21,6 +22,7 @@ export default function App() {
 
             {/* Learning */}
             <Route path="/learn" element={<LearnPage/>}/>
+            <Route path="/learn/topic/grammar/:ruleSlug" element={<GrammarRulePage/>}/>
             <Route path="/learn/topic/:slug" element={<ThemePage/>}/>
 
             {/* Tests */}

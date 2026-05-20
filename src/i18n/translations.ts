@@ -26,6 +26,13 @@ export const translations = {
         wordsHeader: 'Слова теми',
         passageHeader: 'Текст для читання',
       },
+      grammar: {
+        examplesHeader: 'Приклади',
+        sourcesHeader: 'Джерела',
+        unverified: 'Не перевірено',
+        backToGrammar: '← Граматика',
+        ruleForms: ['правило', 'правила', 'правил'] as [string, string, string],
+      },
       notFound: 'Тему не знайдено',
     },
     common: {
@@ -58,6 +65,13 @@ export const translations = {
       topic: {
         wordsHeader: 'Слова темы',
         passageHeader: 'Текст для чтения',
+      },
+      grammar: {
+        examplesHeader: 'Примеры',
+        sourcesHeader: 'Источники',
+        unverified: 'Не проверено',
+        backToGrammar: '← Грамматика',
+        ruleForms: ['правило', 'правила', 'правил'] as [string, string, string],
       },
       notFound: 'Тема не найдена',
     },

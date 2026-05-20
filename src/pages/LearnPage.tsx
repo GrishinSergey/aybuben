@@ -2,7 +2,7 @@
 
 import { useLang } from '../i18n/LangContext';
 import { TopicCard } from '../components/TopicCard';
-import { alphabetThemes, vocabThemes, numeralsThemes } from '../content/themes';
+import { alphabetThemes, vocabThemes, numeralsThemes, grammarThemes } from '../content/themes';
 import { plural } from '../i18n/plural';
 
 export function LearnPage() {
@@ -33,12 +33,20 @@ export function LearnPage() {
           );
         })}
 
-        {/* Граматика — заглушка */}
-        <TopicCard
-          emoji="📖"
-          title={t.topics.grammar.title}
-          disabled
-        />
+        {/* Граматика */}
+        {grammarThemes.map((theme) => {
+          const count = theme.rules.length;
+          return (
+            <TopicCard
+              key={theme.slug}
+              emoji={theme.emoji}
+              title={theme.title[lang]}
+              hyName={theme.hyName}
+              countLabel={`${count} ${plural(count, t.pages.grammar.ruleForms)}`}
+              href={`/learn/topic/${theme.slug}`}
+            />
+          );
+        })}
 
         {/* Числа */}
         {numeralsThemes.map((theme) => {

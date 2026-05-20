@@ -119,7 +119,55 @@ export type NumeralsTheme = {
 };
 
 /* ============================================================
+   Граматика
+   ============================================================ */
+
+export type GrammarSource = {
+  title: string;
+  url: string;
+};
+
+export type GrammarCase = {
+  form: string;
+  label: Bilingual;
+  description: Bilingual;
+};
+
+export type GrammarExample = {
+  hy: string;
+  translit: string;
+  uk: string;
+  ru: string;
+  verified?: boolean;
+};
+
+export type GrammarExampleGroup = {
+  caseForm: string;
+  label: Bilingual;
+  examples: GrammarExample[];
+};
+
+export type GrammarRule = {
+  slug: string;
+  emoji: string;
+  title: Bilingual;
+  intro: Bilingual;
+  cases: GrammarCase[];
+  groups: GrammarExampleGroup[];
+  sources: GrammarSource[];
+};
+
+export type GrammarTheme = {
+  slug: string;
+  kind: 'grammar';
+  emoji: string;
+  title: Bilingual;
+  hyName?: string;
+  rules: GrammarRule[];
+};
+
+/* ============================================================
    Об'єднання
    ============================================================ */
 
-export type Theme = VocabTheme | AlphabetTheme | NumeralsTheme;
+export type Theme = VocabTheme | AlphabetTheme | NumeralsTheme | GrammarTheme;
