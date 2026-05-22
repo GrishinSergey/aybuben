@@ -8,6 +8,7 @@ import {ThemePage} from './pages/ThemePage';
 import {GrammarRulePage} from './pages/GrammarRulePage';
 import {TestsPage} from './pages/TestsPage';
 import {AnimalQuizPage} from './pages/AnimalQuizPage';
+import {GrammarQuizPage} from './pages/GrammarQuizPage';
 
 const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
 
@@ -28,6 +29,7 @@ export default function App() {
             {/* Tests */}
             <Route path="/tests" element={<TestsPage/>}/>
             <Route path="/tests/animals" element={<AnimalQuizPage/>}/>
+            <Route path="/tests/grammar/:quizSlug" element={<GrammarQuizPage/>}/>
 
             {/* 404 → /learn */}
             <Route path="*" element={<Navigate to="/learn" replace/>}/>
