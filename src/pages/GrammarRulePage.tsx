@@ -53,25 +53,93 @@ export function GrammarRulePage() {
         {rule.intro[lang]}
       </p>
 
-      {/* Картки правил */}
+      {/* Картки-пояснення */}
       <div className="grid gap-4 sm:grid-cols-3 mb-12">
-        {rule.cases.map((c, i) => (
+        {rule.points.map((p, i) => (
           <div
             key={i}
             className="bg-white rounded-card-lg p-5 shadow-soft border border-cream-200"
           >
-            <div className="font-hy text-4xl font-bold text-apricot-500 mb-3 leading-none">
-              {c.form}
-            </div>
+            {p.form && (
+              <div className="font-hy text-4xl font-bold text-apricot-500 mb-3 leading-none">
+                {p.form}
+              </div>
+            )}
             <div className="font-semibold text-ink-800 text-sm mb-2">
-              {c.label[lang]}
+              {p.label[lang]}
             </div>
             <p className="text-ink-500 text-sm leading-relaxed">
-              {c.description[lang]}
+              {p.description[lang]}
             </p>
           </div>
         ))}
       </div>
+
+      {/* Таблиці-парадигми */}
+      {rule.tables && rule.tables.length > 0 && (
+        <>
+          <h2 className="font-display vf-soft-md font-semibold text-2xl text-ink-900 -tracking-[0.01em] mb-6">
+            {t.pages.grammar.tablesHeader}
+          </h2>
+          <div className="flex flex-col gap-8 mb-12">
+            {rule.tables.map((table, ti) => (
+              <div key={ti}>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-ink-600 font-medium text-sm">
+                    {table.caption[lang]}
+                  </span>
+                  {table.verified === false && (
+                    <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-400 bg-cream-100 px-2 py-0.5 rounded-full border border-cream-200">
+                      {t.pages.grammar.unverified}
+                    </span>
+                  )}
+                </div>
+                <div className="overflow-x-auto rounded-card shadow-soft border border-cream-200">
+                  <table className="w-full border-collapse bg-white text-sm">
+                    <thead>
+                      <tr className="bg-cream-100">
+                        <th className="px-4 py-3" />
+                        {table.columns.map((col, ci) => (
+                          <th
+                            key={ci}
+                            className="text-left font-semibold text-ink-700 px-4 py-3 border-l border-cream-200"
+                          >
+                            {col[lang]}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table.rows.map((row, ri) => (
+                        <tr key={ri} className="border-t border-cream-200">
+                          <th className="text-left font-medium text-ink-500 px-4 py-3 whitespace-nowrap align-top">
+                            {row.header[lang]}
+                          </th>
+                          {row.cells.map((cell, ci) => (
+                            <td
+                              key={ci}
+                              className="px-4 py-3 border-l border-cream-200 align-top"
+                            >
+                              <span className="font-hy text-[17px] font-semibold text-ink-900">
+                                {cell.hy}
+                              </span>
+                              {cell.translit && (
+                                <span className="block text-[12px] text-ink-300 mt-0.5 tracking-wide">
+                                  {cell.translit}
+                                </span>
+                              )}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
 
       {/* Приклади за групами */}
       <h2 className="font-display vf-soft-md font-semibold text-2xl text-ink-900 -tracking-[0.01em] mb-6">
