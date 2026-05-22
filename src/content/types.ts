@@ -127,8 +127,9 @@ export type GrammarSource = {
   url: string;
 };
 
-export type GrammarCase = {
-  form: string;
+/** Картка-пояснення під вступом. `form` — опційний гліф (напр. артикль ը/ն). */
+export type GrammarPoint = {
+  form?: string;
   label: Bilingual;
   description: Bilingual;
 };
@@ -147,12 +148,33 @@ export type GrammarExampleGroup = {
   examples: GrammarExample[];
 };
 
+/** Клітинка таблиці-парадигми. */
+export type GrammarTableCell = {
+  hy: string;
+  translit?: string;
+};
+
+/** Таблиця-парадигма: відмінювання іменника або дієвідміна дієслова. */
+export type GrammarTable = {
+  /** Підпис над таблицею. */
+  caption: Bilingual;
+  /** Заголовки стовпців (без кутової клітинки). */
+  columns: Bilingual[];
+  /** Рядки: заголовок рядка + клітинки (довжина cells = довжині columns). */
+  rows: Array<{ header: Bilingual; cells: GrammarTableCell[] }>;
+  verified?: boolean;
+};
+
 export type GrammarRule = {
   slug: string;
   emoji: string;
   title: Bilingual;
   intro: Bilingual;
-  cases: GrammarCase[];
+  /** Картки-пояснення під вступом. */
+  points: GrammarPoint[];
+  /** Таблиці-парадигми — для відмінків і дієслів. Опційно. */
+  tables?: GrammarTable[];
+  /** Приклади-речення, згруповані за формою. */
   groups: GrammarExampleGroup[];
   sources: GrammarSource[];
 };

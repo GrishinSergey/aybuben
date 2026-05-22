@@ -28,6 +28,7 @@ export const translations = {
       },
       grammar: {
         examplesHeader: 'Приклади',
+        tablesHeader: 'Таблиці',
         sourcesHeader: 'Джерела',
         unverified: 'Не перевірено',
         backToGrammar: '← Граматика',
@@ -68,6 +69,7 @@ export const translations = {
       },
       grammar: {
         examplesHeader: 'Примеры',
+        tablesHeader: 'Таблицы',
         sourcesHeader: 'Источники',
         unverified: 'Не проверено',
         backToGrammar: '← Грамматика',
